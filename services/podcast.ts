@@ -1,6 +1,6 @@
 import { create } from 'apisauce'
 
-import * as t from '~/app/t/podcastApi'
+import * as t from '~/types/podcastApi'
 
 // `https://api.allorigins.win/get?url=${encodeURIComponent('')}`
 const _api = create({ baseURL: 'https://itunes.apple.com' })
