@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -19,6 +20,7 @@
     "redux-saga": "^1.2.3"
   },
   "devDependencies": {
+    "@pandacss/dev": "^0.15.4",
     "@playwright/test": "^1.38.1",
     "@types/node": "^20",
     "@types/react": "^18",

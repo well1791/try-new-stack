@@ -1,10 +1,7 @@
-import Link from 'next/link'
+import LandingPage from '~/components/template/LandingPage'
 
 export default async function Home() {
   return (
-    <main>
-      <h1>Podcaster</h1>
-      <Link href="/podcast/asd">about?</Link>
-    </main>
+    <LandingPage />
   )
 }

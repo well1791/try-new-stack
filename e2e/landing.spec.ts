@@ -11,16 +11,16 @@ test.describe('Landing page', () => {
 
   test('should have a proper heading', async ({ page }) => {
     const heading = page.getByRole('heading', { name: 'Podcaster' });
-    expect(heading).toBeVisible()
+    await expect(heading).toBeVisible()
   })
 
-//   test('should have a filter', async ({ page }) => {
-//     const filter = page.getByPlaceholder('Filter podcasts...');
-//     expect(filter).toBeVisible()
-//   })
+  test('should have a filter', async ({ page }) => {
+    const filter = page.getByPlaceholder('Filter podcasts...');
+    await expect(filter).toBeFocused()
+  })
 
-//   test('should count up to 100 podcasts', async ({ page }) => {
-//     const podcasts = page.getByLabel(/^Podcast:/);
-//     expect(podcasts).toHaveCount(100)
-//   })
+  // test('should count up to 100 podcasts', async ({ page }) => {
+  //   const podcasts = page.getByLabel(/^Podcast:/);
+  //   expect(podcasts).toHaveCount(100)
+  // })
 })
