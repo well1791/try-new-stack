@@ -19,8 +19,8 @@ test.describe('Landing page', () => {
     await expect(filter).toBeFocused()
   })
 
-  // test('should count up to 100 podcasts', async ({ page }) => {
-  //   const podcasts = page.getByLabel(/^Podcast:/);
-  //   expect(podcasts).toHaveCount(100)
-  // })
+  test('should count up to 100 podcasts', async ({ page }) => {
+    const podcasts = page.getByText(/^Author:/);
+    expect(podcasts).toHaveCount(100)
+  })
 })

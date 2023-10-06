@@ -2,9 +2,7 @@ import { css } from '~/styled-system/css'
 import { grid } from '~/styled-system/patterns'
 
 
-export const container = css({
-  p: 5,
-})
+export const container = css({})
 
 export const filterBox = css({
   justifyContent: 'flex-end',
@@ -15,6 +13,4 @@ export const cards = css(grid.raw({
   columns: 4,
   rowGap: '8rem',
   columnGap: 5,
-}), {
-
-})
+}))

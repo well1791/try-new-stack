@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 // import Image from 'next/image'
 
@@ -28,8 +30,8 @@ export default function PodcastCard({
 }: Props) {
   const podcastDetailsUrl = route.podcast.makeUrl({ podcastId: d.id })
   const rootClass = cx(st.container, css({ '--height': imgHeight }), className)
-  console.log(podcastDetailsUrl)
 
+  // TODO: ADD IMAGE
   return (
     <article className={rootClass}>
       <Link href={podcastDetailsUrl} className={st.content}>

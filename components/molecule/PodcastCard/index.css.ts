@@ -10,8 +10,10 @@ export const container = css({
 export const content = css(vstack.raw(), {
   boxShadow: 'sm',
   p: 3,
+  textAlign: 'center',
 })
 
+// TODO: ADD STYLE
 export const  img = css({
   clipPath: 'circle(50%)',
   pos: 'absolute',

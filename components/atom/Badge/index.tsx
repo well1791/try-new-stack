@@ -1,3 +1,5 @@
+'use client'
+
 import * as st from './index.css'
 import { cx } from '~/styled-system/css'
 
