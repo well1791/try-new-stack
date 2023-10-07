@@ -1,7 +1,7 @@
-import podcastsReducer from './features/podcasts/slice'
-import filterReducer from './features/filter/slice'
-import { PodcastsState } from './features/podcasts/types'
-import { FilterState } from './features/filter/types'
+import podcastsReducer from './units/podcasts/slice'
+import filterReducer from './units/filter/slice'
+import { PodcastsState } from './units/podcasts/types'
+import { FilterState } from './units/filter/types'
 
 export type StateType = {
   podcasts: PodcastsState

@@ -2,14 +2,14 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 import { getInitialState } from '~/redux/utils'
 import { FILTER, CHANGE_TEXT, GET_RESULT } from './types'
-import type { FilterState, FilterResultData } from './types'
+import type { FilterState } from './types'
 
 const initialState: FilterState = {
   text: '',
-  result: getInitialState(new Map()),
+  result: getInitialState([]),
 }
 
-export const filterSlice = createSlice({
+const slice = createSlice({
   name: FILTER,
   initialState,
   reducers: {
@@ -25,16 +25,13 @@ export const filterSlice = createSlice({
     },
 
     // filtered result
-    [GET_RESULT]: (
-      state: FilterState,
-      // { payload: text }: PayloadAction<string>,
-    ) => {
+    [GET_RESULT]: (state: FilterState) => {
       state.result.isLoading = true
       state.result.errors = []
     },
     setFilterResultSuccess: (
       state: FilterState,
-      { payload: result }: PayloadAction<FilterResultData>,
+      { payload: result }: PayloadAction<FilterState['result']['data']>,
     ) => {
       state.result.isLoading = false
       state.result.data = result
@@ -55,6 +52,6 @@ export const {
   getFilterResult,
   setFilterResultSuccess,
   setFilterResultError,
-} = filterSlice.actions
+} = slice.actions
 
-export default filterSlice.reducer
+export default slice.reducer

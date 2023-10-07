@@ -1,7 +1,7 @@
 import type {
   PodcastSummary,
   PodcastById,
-} from '~/redux/features/podcasts/types'
+} from '~/redux/units/podcasts/types'
 import type {
   PodcastsEntryResponse,
   PodcastResultResponse,
@@ -18,7 +18,7 @@ export const fromPodcastsEntryToPodcastSummary = (
     author: data['im:artist'].label,
     img: {
       src: lastImg?.label,
-      alt: 'no alt yet',
+      alt: 'podcast image',
     },
   }
 }

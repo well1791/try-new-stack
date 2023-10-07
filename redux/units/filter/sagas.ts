@@ -7,11 +7,12 @@ import {
   setFilterResultSuccess,
   setFilterResultError,
 } from './slice'
-import type { FilterResultData } from './types'
-import type { PodcastsSummaryData } from '~/redux/features/podcasts/types'
+import { SECONDS } from '~/redux/utils'
+import type { FilterState } from './types'
+import type { PodcastsSummaryData } from '~/redux/units/podcasts/types'
 
 function* changeFilterText({ payload }: PayloadAction<string>) {
-  delay(500)
+  yield delay(.5 * SECONDS)
   yield put(setFilterText(payload.trim()))
 }
 
@@ -19,23 +20,22 @@ export function* watchChangeFilterText() {
   yield takeLatest(FQN_CHANGE_TEXT, changeFilterText)
 }
 
-function matchFilter(filter: string) {
+function includes(filter: string) {
   const isCaseSensitive = filter !== filter.toLowerCase()
-  return (_text: string) => {
-    const text = isCaseSensitive ? _text : _text.toLowerCase()
-    return text.includes(filter)
-  }
+  return (text: string) => isCaseSensitive
+    ? text.includes(filter)
+    : text.toLowerCase().includes(filter)
 }
 
 function* getFilterResult() {
   try {
     const filterText: string = yield select((s) => s.filter.text)
-    const podcasts: PodcastsSummaryData = yield select((s) => s.podcasts.list.data)
-    const result: FilterResultData = podcasts.reduce((z, x, i) =>
-      ([x.title, x.author].some(matchFilter(filterText)))
-        ? z.set(x.id, i)
-        : z
-    , new Map())
+    const podcasts: PodcastsSummaryData = yield select(
+      (s) => s.podcasts.list.data ?? []
+    )
+    const result: FilterState['result']['data'] = filterText === ''
+      ? podcasts
+      : podcasts.filter((p) => [p.title, p.author].some(includes(filterText)))
     yield put(setFilterResultSuccess(result))
   } catch (error) {
     const err = Array.isArray(error) ? error : [String(error)]

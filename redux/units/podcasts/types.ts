@@ -1,4 +1,4 @@
-import { DataState } from '~/types/redux'
+import type { DataState } from '~/redux/types'
 
 export type PodcastSummary = {
   id: string
@@ -25,11 +25,3 @@ export type PodcastsState = {
 
 export const NAMESPACE = 'podcasts'
 export type NAMESPACE = typeof NAMESPACE
-
-export const FETCH_PODCASTS = 'fetchPodcasts'
-export const FQN_GET_PODCASTS = `${NAMESPACE}/${FETCH_PODCASTS}`
-export type FQN_GET_PODCASTS = typeof FQN_GET_PODCASTS
-
-export const FETCH_PODCAST_BY_ID = 'fetchPodcastById'
-export const FQN_GET_PODCAST_BY_ID = `${NAMESPACE}/${FETCH_PODCAST_BY_ID}`
-export type FQN_GET_PODCAST_BY_ID = typeof FQN_GET_PODCAST_BY_ID

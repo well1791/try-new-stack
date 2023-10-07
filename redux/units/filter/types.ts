@@ -1,10 +1,9 @@
-import { DataState } from '~/types/redux'
+import type { DataState } from '~/redux/types'
+import type { PodcastsSummaryData } from '~/redux/units/podcasts/types'
 
-export type FilterResultData = Map<string, number>
-export type FilterResultState = DataState<FilterResultData>
 export type FilterState = {
   text: string
-  result: FilterResultState
+  result: DataState<PodcastsSummaryData>
 }
 
 export const FILTER = 'filter'
