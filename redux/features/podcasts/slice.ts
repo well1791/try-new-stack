@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 import { getInitialState } from '~/redux/utils'
-import { NAMESPACE, GET_PODCASTS, GET_PODCAST_BY_ID } from './types'
+import { NAMESPACE, FETCH_PODCASTS, FETCH_PODCAST_BY_ID } from './types'
 import type {
   PodcastsState,
   PodcastsSummaryData,
@@ -18,18 +18,18 @@ export const podcastsSlice = createSlice({
   initialState,
   reducers: {
     // podcasts summary
-    [GET_PODCASTS]: (state: PodcastsState) => {
+    [FETCH_PODCASTS]: (state: PodcastsState) => {
       state.list.isLoading = true
       state.list.errors = []
     },
-    getPodcastsSuccess: (
+    setPodcastsSuccess: (
       state: PodcastsState,
       { payload: podcasts }: PayloadAction<PodcastsSummaryData>,
     ) => {
       state.list.isLoading = false
       state.list.data = podcasts
     },
-    getPodcastsError: (
+    setPodcastsError: (
       state: PodcastsState,
       { payload: error }: PayloadAction<Array<string>>,
     ) => {
@@ -38,21 +38,21 @@ export const podcastsSlice = createSlice({
     },
 
     // podcasts by id
-    [GET_PODCAST_BY_ID]: (
+    [FETCH_PODCAST_BY_ID]: (
       state: PodcastsState,
       { payload: id }: PayloadAction<string>,
     ) => {
       state.byId.isLoading = true
       state.byId.errors = []
     },
-    getPodcastByIdSuccess: (
+    setPodcastByIdSuccess: (
       state: PodcastsState,
       { payload: podcast }: PayloadAction<PodcastById>,
     ) => {
       state.byId.isLoading = false
       state.byId.data[podcast.id] = podcast
     },
-    getPodcastByIdError: (
+    setPodcastByIdError: (
       state: PodcastsState,
       { payload: error }: PayloadAction<Array<string>>,
     ) => {
@@ -63,12 +63,12 @@ export const podcastsSlice = createSlice({
 })
 
 export const {
-  getPodcasts,
-  getPodcastsSuccess,
-  getPodcastsError,
-  getPodcastById,
-  getPodcastByIdSuccess,
-  getPodcastByIdError,
+  fetchPodcasts,
+  setPodcastsSuccess,
+  setPodcastsError,
+  fetchPodcastById,
+  setPodcastByIdSuccess,
+  setPodcastByIdError,
 } =  podcastsSlice.actions
 
 export default podcastsSlice.reducer

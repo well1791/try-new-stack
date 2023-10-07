@@ -1,19 +1,19 @@
 import { all, fork } from 'redux-saga/effects'
 
 import {
-  watchGetPodcasts,
-  watchGetPodcastById,
+  watchFetchPodcasts,
+  watchFetchPodcastById,
 } from './features/podcasts/sagas'
 import {
-  watchchangeFilterText,
+  watchChangeFilterText,
   watchGetFilterResult,
 } from './features/filter/sagas'
 
 export function* rootSaga () {
   yield all([
-    fork(watchGetPodcasts),
-    fork(watchGetPodcastById),
-    fork(watchchangeFilterText),
+    fork(watchFetchPodcasts),
+    fork(watchFetchPodcastById),
+    fork(watchChangeFilterText),
     fork(watchGetFilterResult),
   ])
 }

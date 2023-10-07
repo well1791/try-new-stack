@@ -26,10 +26,10 @@ export type PodcastsState = {
 export const NAMESPACE = 'podcasts'
 export type NAMESPACE = typeof NAMESPACE
 
-export const GET_PODCASTS = 'getPodcasts'
-export const FQN_GET_PODCASTS = `${NAMESPACE}/${GET_PODCASTS}`
+export const FETCH_PODCASTS = 'fetchPodcasts'
+export const FQN_GET_PODCASTS = `${NAMESPACE}/${FETCH_PODCASTS}`
 export type FQN_GET_PODCASTS = typeof FQN_GET_PODCASTS
 
-export const GET_PODCAST_BY_ID = 'getPodcastById'
-export const FQN_GET_PODCAST_BY_ID = `${NAMESPACE}/${GET_PODCAST_BY_ID}`
+export const FETCH_PODCAST_BY_ID = 'fetchPodcastById'
+export const FQN_GET_PODCAST_BY_ID = `${NAMESPACE}/${FETCH_PODCAST_BY_ID}`
 export type FQN_GET_PODCAST_BY_ID = typeof FQN_GET_PODCAST_BY_ID

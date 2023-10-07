@@ -6,7 +6,7 @@ import type { FilterState, FilterResultData } from './types'
 
 const initialState: FilterState = {
   text: '',
-  result: getInitialState({}),
+  result: getInitialState(new Map()),
 }
 
 export const filterSlice = createSlice({
@@ -17,7 +17,7 @@ export const filterSlice = createSlice({
       state: FilterState,
       { payload: text }: PayloadAction<string>,
     ) => {},
-    storeFilterText: (
+    setFilterText: (
       state: FilterState,
       { payload: text }: PayloadAction<string>,
     ) => {
@@ -32,14 +32,14 @@ export const filterSlice = createSlice({
       state.result.isLoading = true
       state.result.errors = []
     },
-    getFilterResultSuccess: (
+    setFilterResultSuccess: (
       state: FilterState,
       { payload: result }: PayloadAction<FilterResultData>,
     ) => {
       state.result.isLoading = false
       state.result.data = result
     },
-    getFilterResultError: (
+    setFilterResultError: (
       state: FilterState,
       { payload: error }: PayloadAction<Array<string>>,
     ) => {
@@ -51,10 +51,10 @@ export const filterSlice = createSlice({
 
 export const {
   changeFilterText,
-  storeFilterText,
+  setFilterText,
   getFilterResult,
-  getFilterResultSuccess,
-  getFilterResultError,
+  setFilterResultSuccess,
+  setFilterResultError,
 } = filterSlice.actions
 
 export default filterSlice.reducer

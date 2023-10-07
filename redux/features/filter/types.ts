@@ -1,6 +1,6 @@
 import { DataState } from '~/types/redux'
 
-export type FilterResultData = Record<string, number>
+export type FilterResultData = Map<string, number>
 export type FilterResultState = DataState<FilterResultData>
 export type FilterState = {
   text: string
