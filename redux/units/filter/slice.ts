@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 import { getInitialState } from '~/redux/utils'
-import { FILTER, CHANGE_TEXT, GET_RESULT } from './types'
+import { FILTER, CHANGE_TEXT } from './types'
 import type { FilterState } from './types'
 
 const initialState: FilterState = {
@@ -28,7 +28,7 @@ const slice = createSlice({
     },
 
     // filtered result
-    [GET_RESULT]: (state: FilterState) => {
+    startFilter: (state: FilterState) => {
       state.result.isLoading = true
       state.result.errors = []
     },
@@ -52,7 +52,7 @@ const slice = createSlice({
 export const {
   changeFilterText,
   setFilterText,
-  getFilterResult,
+  startFilter,
   setFilterResultSuccess,
   setFilterResultError,
 } = slice.actions

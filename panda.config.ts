@@ -26,6 +26,7 @@ export default defineConfig({
       tokens: {
         colors: {
           primary: { value: '#2679c2' },
+          lightBg: { value: '#f9f9f9' },
         },
       },
     },

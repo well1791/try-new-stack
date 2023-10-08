@@ -4,7 +4,7 @@ import Link from 'next/link'
 // import Image from 'next/image'
 
 import * as st from './index.css'
-import route from '~/routing'
+import route from '~/router'
 import { css, cx } from '~/styled-system/css'
 
 export type Data = {
@@ -23,7 +23,7 @@ export type Props = {
   data: Data
 }
 
-export default function PodcastCard({
+export default function PodcastGridItem({
   className,
   imgHeight = 150,
   data: d

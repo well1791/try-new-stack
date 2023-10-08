@@ -67,41 +67,74 @@ export type PodcastsResponse = {
   }
 }
 
-export type PodcastResultResponse = {
-  wrapperType: string
-  kind: string
-  artistId: number
+export type PodcastResultEpisodeResponse = {
+  artistIds: Array<unknown>
+  artworkUrl60: string
+  artworkUrl160: string
+  artworkUrl600: string
+  closedCaptioning: string
   collectionId: number
-  trackId: number
-  artistName: string
   collectionName: string
-  trackName: string
-  collectionCensoredName: string
-  trackCensoredName: string
-  artistViewUrl: string
   collectionViewUrl: string
+  contentAdvisoryRating: string
+  country: string
+  description: string
+  episodeFileExtension: string
+  episodeContentType: string
+  episodeGuid: string
+  episodeUrl: string
   feedUrl: string
+  genres: Array<{ name: string; id: string }>
+  kind: 'podcast-episode'
+  previewUrl: string
+  releaseDate: string
+  shortDescription: string
+  trackId: number
+  trackName: string
+  trackTimeMillis: number
   trackViewUrl: string
+  wrapperType: 'podcastEpisode'
+}
+
+export type PodcastResultTrackResponse = {
   artworkUrl30: string
   artworkUrl60: string
   artworkUrl100: string
-  collectionPrice: number
-  trackPrice: number
-  collectionHdPrice: number
-  releaseDate: string
+  artworkUrl600: string
+  artistId: number
+  artistName: string
+  artistViewUrl: string
+  collectionCensoredName: string
   collectionExplicitness: string
-  trackExplicitness: string
-  trackCount: number
-  trackTimeMillis: number
+  collectionHdPrice: number
+  collectionId: number
+  collectionName: string
+  collectionPrice: number
+  collectionViewUrl: string
   country: string
   currency: string
-  primaryGenreName: string
-  artworkUrl600: string
+  kind: string
+  feedUrl: string
   genreIds: Array<string>
   genres: Array<string>
+  primaryGenreName: string
+  releaseDate: string
+  trackCensoredName: string
+  trackId: number
+  trackName: string
+  trackCount: number
+  trackExplicitness: string
+  trackPrice: number
+  trackTimeMillis: number
+  trackViewUrl: string
+  wrapperType: 'track'
 }
 
-export type PodcastResponse = {
+export type PodcastResultResponse =
+  | PodcastResultEpisodeResponse
+  | PodcastResultTrackResponse
+
+  export type PodcastResponse = {
   resultCount: number
   results: Array<PodcastResultResponse>
 }

@@ -2,11 +2,13 @@
 
 import * as st from './index.css'
 import FilterBox from '~/components/molecule/FilterBox'
-import PodcastCard from '~/components/molecule/PodcastCard'
-import type { Data as PodcastCardData } from '~/components/molecule/PodcastCard'
+import PodcastGridItem from '~/components/molecule/PodcastGridItem'
+import type {
+  Data as PodcastGridItemData
+} from '~/components/molecule/PodcastGridItem'
 
 export type Data = {
-  podcasts: Array<PodcastCardData>
+  podcasts: Array<PodcastGridItemData>
 }
 
 export type Props = {
@@ -37,7 +39,7 @@ export default function PodcastGrid({
       <ul className={st.cards}>
         {d.podcasts.map((podcast) => (
           <li key={podcast.id}>
-            <PodcastCard data={podcast} />
+            <PodcastGridItem data={podcast} />
           </li>
         ))}
       </ul>

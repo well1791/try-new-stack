@@ -1,14 +1,12 @@
 import { all, fork } from 'redux-saga/effects'
 
-import {
-  watchChangeFilterText,
-  watchGetFilterResult,
-} from './units/filter/sagas'
+import { watchChangeFilterText } from './units/filter/sagas'
+import { watchStopFetch } from './units/podcasts/sagas'
 
 export function* rootSaga () {
   yield all([
     fork(watchChangeFilterText),
-    fork(watchGetFilterResult),
+    fork(watchStopFetch),
   ])
 }
 

@@ -13,7 +13,8 @@ export const container = css(flex.raw({
   paddingBlockStart: 10,
   paddingBlockEnd: 3,
   _after: {
-    opacity: 'var(--is-loading, 0)',
+    '[data-is-loading=true]&': { opacity: 1 },
+    '[data-is-loading=false]&': { opacity: 0 },
     content: '"⏳"',
     marginInlineStart: 'auto',
     paddingInlineEnd: 4,

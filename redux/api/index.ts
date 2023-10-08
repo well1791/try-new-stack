@@ -1,18 +1,17 @@
 import {
-  ApiCtx,
+  UndoCtx,
   createApi,
   requestMonitor,
   fetcher,
+  undoer,
 } from 'saga-query'
 
-const api = createApi<ApiCtx>();
+const api = createApi<UndoCtx>();
 
 api.use(requestMonitor());
 api.use(api.routes());
-api.use(fetcher({
-  baseUrl: 'https://itunes.apple.com',
-  // baseUrl: 'https://api.allorigins.win/get?url=https://itunes.apple.com',
-}));
+api.use(fetcher({ baseUrl: 'https://api.allorigins.win/get?url=' }));
+api.use(undoer())
 
 export * from './types'
 export default api
