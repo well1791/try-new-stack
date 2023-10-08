@@ -9,9 +9,9 @@ import { useAppDispatch, useAppSelector } from '~/redux/store'
 
 export default function Home() {
   const dispatch = useAppDispatch()
-  const podcastsList = useAppSelector((s) => s.podcasts.list)
+  const isLoading = useAppSelector((s) => s.podcasts.list.isLoading)
   const filterText = useAppSelector((s) => s.filter.text)
-  const filterResult = useAppSelector((s) => s.filter.result)
+  const podcasts = useAppSelector((s) => s.filter.result.data)
 
   useEffect(() => {
     dispatch(fetchPodcasts())
@@ -24,9 +24,9 @@ export default function Home() {
   return (
     <PodcastGrid
       filterName="podcast-filter"
-      data={{ podcasts: filterResult.data}}
-      onFilterChange={(s: string) => dispatch(changeFilterText(s))}
-      isLoading={podcastsList.isLoading || filterResult.isLoading}
+      data={{ podcasts }}
+      onFilterChange={(s) => dispatch(changeFilterText(s))}
+      isLoading={isLoading}
     />
   )
 }

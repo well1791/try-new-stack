@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { ApiCtx, timer } from 'saga-query'
+import { ApiCtx, timer, delay } from 'saga-query'
 import { put } from 'redux-saga/effects'
 
 import api from '~/redux/api'
@@ -20,7 +20,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     // podcasts summary
-    fetchPodcasts: (state: PodcastsState) => {
+    startPodcastsFetch: (state: PodcastsState) => {
       state.list.isLoading = true
       state.list.errors = []
     },
@@ -40,10 +40,7 @@ const slice = createSlice({
     },
 
     // podcasts by id
-    fetchPodcastById: (
-      state: PodcastsState,
-      { payload: id }: PayloadAction<string>,
-    ) => {
+    startPodcastByIdFetch: (state: PodcastsState) => {
       state.byId.isLoading = true
       state.byId.errors = []
     },
@@ -69,8 +66,8 @@ export const fetchPodcasts = api.get(
   '/us/rss/toppodcasts/limit=100/genre=1310/json',
   { saga: timer(ONE_DAY) },
   function* (ctx: ApiCtx, next) {
+    yield put(startPodcastsFetch())
     yield next()
-    yield put(slice.actions.fetchPodcasts())
     if (ctx.json.ok) {
       const { data } = ctx.json;
       const podcasts = data.feed.entry.map(fromPodcastsEntryToPodcastSummary)
@@ -85,21 +82,24 @@ export const fetchPodcasts = api.get(
 export const fetchPodcastById = api.get(
   '/lookup?id=:id&media=podcast&entity=podcastEpisode&limit=20',
   { saga: timer(ONE_DAY) },
-  function* () {
-    try {
+  function* (ctx: ApiCtx, next) {
+    yield next()
+    if (ctx.json.ok) {
+      // yield put(startPodcastByIdFetch())
       // const response = yield call(api.fetchPodcast, id)
       // console.log(response)
-      // yield put(getPodcastByIdSuccess());
-    } catch (error) {
-      // const err = Array.isArray(error) ? error : [String(error)]
-      // yield put(setPodcastByIdError(err))
+      // yield put(setPodcastByIdSuccess(response));
+    } else {
+      yield put(setPodcastByIdError(['Error: ']))
     }
   },
 )
 
 export const {
+  startPodcastsFetch,
   setPodcastsSuccess,
   setPodcastsError,
+  startPodcastByIdFetch,
   setPodcastByIdSuccess,
   setPodcastByIdError,
 } =  slice.actions

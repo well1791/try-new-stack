@@ -14,4 +14,5 @@ api.use(fetcher({
   // baseUrl: 'https://api.allorigins.win/get?url=https://itunes.apple.com',
 }));
 
+export * from './types'
 export default api

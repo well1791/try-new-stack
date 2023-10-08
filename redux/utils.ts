@@ -1,4 +1,4 @@
-import type { DataState } from '~/types/redux'
+import type { DataState } from '~/redux/types'
 
 // for cache purposes
 export const SECONDS = 1000

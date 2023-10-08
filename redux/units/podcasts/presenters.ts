@@ -5,7 +5,7 @@ import type {
 import type {
   PodcastsEntryResponse,
   PodcastResultResponse,
-} from '~/service/podcast/types'
+} from '~/redux/api'
 
 export const fromPodcastsEntryToPodcastSummary = (
   data: PodcastsEntryResponse

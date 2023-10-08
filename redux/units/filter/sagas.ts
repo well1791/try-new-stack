@@ -20,12 +20,10 @@ export function* watchChangeFilterText() {
   yield takeLatest(FQN_CHANGE_TEXT, changeFilterText)
 }
 
-function includes(filter: string) {
-  const isCaseSensitive = filter !== filter.toLowerCase()
-  return (text: string) => isCaseSensitive
-    ? text.includes(filter)
-    : text.toLowerCase().includes(filter)
-}
+const includes = (filter: string) => (text: string) =>
+  filter === filter.toLowerCase()
+    ? text.toLowerCase().includes(filter)
+    : text.includes(filter)
 
 function* getFilterResult() {
   try {

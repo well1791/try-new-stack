@@ -16,11 +16,14 @@ const slice = createSlice({
     [CHANGE_TEXT]: (
       state: FilterState,
       { payload: text }: PayloadAction<string>,
-    ) => {},
+    ) => {
+      state.result.isLoading = true
+    },
     setFilterText: (
       state: FilterState,
       { payload: text }: PayloadAction<string>,
     ) => {
+      state.result.isLoading = false
       state.text = text
     },
 

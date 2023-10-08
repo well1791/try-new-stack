@@ -7,7 +7,7 @@ import ReduxProvider from '~/redux/provider'
 
 export const metadata: Metadata = {
   title: 'Podcaster',
-  description: 'Podcaster landing page',
+  description: 'Podcaster',
 }
 
 export type Props = React.PropsWithChildren<{}>
