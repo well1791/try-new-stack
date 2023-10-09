@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "rm -rf .next && next dev",
+    "prod": "npm run build && PORT=4000 npm run start",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -21,7 +22,7 @@
     "ts-routeways": "^1.6.0"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.15.4",
+    "@pandacss/dev": "^0.15.5",
     "@playwright/test": "^1.38.1",
     "@types/node": "^20",
     "@types/react": "^18",

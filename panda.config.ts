@@ -1,7 +1,6 @@
 import { defineConfig } from '@pandacss/dev'
 
 export default defineConfig({
-  // Whether to use css reset
   preflight: true,
 
   // Where to look for your css declarations
@@ -14,14 +13,8 @@ export default defineConfig({
   exclude: [],
 
   // Useful for theme customization
-  // presets: [],
+  // presets: ['@pandacss/preset-panda'],
   theme: {
-    // tokens: {
-    //   colors: {
-    //     primary: { value: '#2679c2' },
-    //   },
-    // },
-
     extend: {
       tokens: {
         colors: {
@@ -37,8 +30,6 @@ export default defineConfig({
   outExtension: 'js',
   clean: true,
 
-  // minify: process.env.NODE_ENV === 'production',
-  // hash: process.env.NODE_ENV === 'production',
-  minify: false,
-  hash: false,
+  optimize: process.env.NODE_ENV === 'production',
+  minify: process.env.NODE_ENV === 'production',
 });
